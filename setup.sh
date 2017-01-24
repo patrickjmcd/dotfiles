@@ -1,4 +1,3 @@
-#!/bin/bash
 osx() {
     echo "Setting everything up for macOS..."
     # in case we are in bash
@@ -107,8 +106,8 @@ ubuntu(){
 }
 
 platform="$(uname | tr '[:upper:]' '[:lower:]')"
-if [[ $platform == 'linux' ]]; then
+if [ $platform == 'linux' ]; then
     ubuntu
-elif [[ $platform == 'darwin' ]]; then
+elif [ $platform == 'darwin' ]; then
     osx
 fi
