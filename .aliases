@@ -3,14 +3,19 @@ alias x="exit"
 alias q="exit"
 alias :q="exit"
 alias ltr="ls -ltr"
-alias vi=vim # prefer vim to vi
 alias ...="../.."
 alias ....="../../.."
 alias .....="../../../.."
 alias rm=trash # safer deleting using trash-cli
 alias please=sudo # nicer sudo command
-alias ab="atom-beta ."
+alias dammit=sudo # meaner sudo command
 alias resource="source ~/.zshrc"
+alias zshconfig="atom ~/.zshrc"
+
+# Spotify
+alias s.="spotify next"
+alias s,="spotify prev"
+alias sp="spotify pause"
 
 # Git
 alias gmm="git merge master"
@@ -30,20 +35,9 @@ alias gbam="delete_local_merged_branches"
 alias gbamr="delete_remote_merged_branches"
 alias gcleanup="delete_local_merged_branches && delete_remote_merged_branches"
 
-# NPM
-alias ni="npm install"
-alias use_npm="npm set registry https://registry.npmjs.org/"
-alias use_wwt="npm set registry http://sinopia.wwt.com/"
 
 # start screensaver
 alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
 # get current weather
 alias weather="curl wttr.in"
-
-# start/stop tomcat server
-alias tomcat_start="/Library/Tomcat/bin/startup.sh"
-alias tomcat_stop="/Library/Tomcat/bin/shutdown.sh"
-
-# ssh logins
-alias mike@pol="ssh mike@67.205.140.44"

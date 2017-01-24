@@ -1,6 +1,6 @@
 [user]
-	name = Mike McBride
-	email = mmcbride1007@gmail.com
+	name = Patrick McDonagh
+	email = patrickjmcd@gmail.com
 [push]
 	default = simple
 [filter "lfs"]
@@ -8,4 +8,4 @@
 	smudge = git-lfs smudge %f
 	required = true
 [core]
-	editor = /usr/local/bin/vim
+	excludesfile = ~/.gitignore_global
