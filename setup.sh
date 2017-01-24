@@ -105,9 +105,9 @@ ubuntu(){
     echo "Setting up everything for Linux"
 }
 
-platform="$(uname)"
-if [ "$platform" == "Linux" ]; then
+platform="$(uname | tr '[:upper:]' '[:lower:]')"
+if [[ "$platform" == "linux" ]]; then
     ubuntu
-elif [ "$platform" == "Darwin" ]; then
+elif [[ "$platform" == "darwin" ]]; then
     osx
 fi
