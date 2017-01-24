@@ -1,7 +1,14 @@
-# Source Prezto
-if [[ -s ~/.zprezto/init.zsh ]]; then
-  source ~/.zprezto/init.zsh
-fi
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/patrickjmcd/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="pure"
+
+plugins=(git brew python docker pip tmux aws osx)
+
+source $ZSH/oh-my-zsh.sh
 
 # use z for better fuzzy searching
 if [[ -s ~/z/z.sh ]]; then
@@ -21,14 +28,6 @@ fi
 # exports
 export PATH="$PATH:~/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/mysql/bin"
 
-# init rbenv
-eval "$(rbenv init -)"
 
-# set JENV_ROOT for jenv to work
-export JENV_ROOT=/usr/local/opt/jenv
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="~/.sdkman"
-[[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+autoload -U promptinit; promptinit
+prompt pure
