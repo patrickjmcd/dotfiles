@@ -106,8 +106,8 @@ ubuntu(){
 }
 
 platform="$(uname | tr '[:upper:]' '[:lower:]')"
-if [ '$platform' == 'linux' ]; then
+if [ "$platform" == "linux" ]; then
     ubuntu
-elif [ '$platform' == 'darwin' ]; then
+elif [ "$platform" == "darwin" ]; then
     osx
 fi
