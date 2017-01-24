@@ -1,3 +1,4 @@
+#!/bin/bash
 osx() {
     echo "Setting everything up for macOS..."
     # in case we are in bash
