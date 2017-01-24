@@ -6,7 +6,7 @@ These are my dotfiles. It's here so that I don't lose any of my setups when swit
 
 ### Operating system
 
-This setup is for macOS. It will almost certainly not work on Linux and definitely won't work on Windows. You will need to have Git and Ruby installed. macOS comes bundled with these, but you may have to install Git via Xcode if you haven't done that yet. You can also install it via Homebrew (see more below).
+This will set up NEARLY identical systems on macOS and debian-flavored Linux distros. YMMV as far as any other distros.
 
 ### SSH for GitHub
 
@@ -20,6 +20,7 @@ You need to have [NodeJS](https://nodejs.org/en/download) installed. I'd suggest
 ## Setup
 
 Got all that? Great. Run this install script. It will do the following:
+### If your operating system is macOS, it will:
 - set your shell to zsh
 - install [Prezto](https://github.com/sorin-ionescu/prezto) that I forked and modified
 - install [Homebrew](http://brew.sh) if you don't already have it, or run `brew update` if you do
@@ -29,8 +30,6 @@ Got all that? Great. Run this install script. It will do the following:
   - [z](http://github.com/rupa/z) - super fast way to jump around files/folders
   - [tree](http://brewformulas.org/tree) - linux `tree` command to show file structure
   - [trash-cli](http://github.com/sindresorhus/trash-cli) - a safer way to delete
-  - [n](https://github.com/tj/n) - for managing multiple versions of Node.js
-  - [rbenv](https://github.com/rbenv/rbenv) - for managing your Ruby versions/environment
 - install [Hyperterm](https://hyperterm.org) as a terminal replacement and set up an opinionated `.hyperterm.js` config file
 
 Ready to get started?? Just paste this into your terminal. **WARNING:** Please make sure you have read through the setup script so you understand what this is doing before executing this.
@@ -56,3 +55,7 @@ For a new Mac setup, I copied the legendary script from @mathiasbynens. The cano
 ```
 sh .macos
 ```
+
+## Credit
+
+Much credit is due to [@mmcbride1007](https://github.com/mmcbride1007) for his [dotfiles](https://github.com/mmcbride1007/dotfiles) repo, which I've basically ripped off. Thank you, Mike! (AMDG)

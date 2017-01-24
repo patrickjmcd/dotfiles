@@ -25,9 +25,5 @@ if [[ -f ~/dotfiles/.functions ]]; then
   source ~/dotfiles/.functions
 fi
 
-# exports
-export PATH="$PATH:~/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/mysql/bin"
-
-
 autoload -U promptinit; promptinit
 prompt pure
