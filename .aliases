@@ -6,16 +6,16 @@ alias ltr="ls -ltr"
 alias ...="../.."
 alias ....="../../.."
 alias .....="../../../.."
-alias rm=trash # safer deleting using trash-cli
+#alias rm=trash # safer deleting using trash-cli
 alias please=sudo # nicer sudo command
 alias dammit=sudo # meaner sudo command
 alias resource="source ~/.zshrc"
 alias zshconfig="atom ~/.zshrc"
 
 # Spotify
-alias s.="spotify next"
-alias s,="spotify prev"
-alias sp="spotify pause"
+# alias s.="spotify next"
+# alias s,="spotify prev"
+# alias sp="spotify pause"
 
 # Git
 alias gmm="git merge master"
@@ -37,7 +37,7 @@ alias gcleanup="delete_local_merged_branches && delete_remote_merged_branches"
 
 
 # start screensaver
-alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+# alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
 # get current weather
 alias weather="curl wttr.in"
