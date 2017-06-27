@@ -8,7 +8,7 @@ echo "Lets first make sure our package list is up to date"
 sudo apt-get update
 
 echo "Installing zsh"
-sudo apt-get install zsh
+sudo apt-get install -y zsh
 
 echo "Switching to zsh..."
 zsh
@@ -22,7 +22,7 @@ echo "Removing any existing .zshrc config..."
 rm .zshrc
 
 echo "Making sure git is installed.."
-sudo apt-get install git
+sudo apt-get install -y git
 
 # try to install z
 if [[ ! -d ~/z ]]; then
@@ -32,7 +32,7 @@ fi
 
 # install tree
 echo "Installing tree..."
-sudo apt-get install tree
+sudo apt-get install -y tree
 
 echo "Installing Oh My ZSH!"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -61,6 +61,10 @@ if [ -f ~/.gitconfig ]; then
     rm ~/.gitconfig
 fi
 
+if [ -f ~/.zshrc ]; then
+    echo "Overriding .zshrc..."
+    rm ~/.zshrc
+fi
 ln -s ~/dotfiles/zshrc ~/.zshrc
 
 # in case we are in bash...
