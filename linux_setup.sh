@@ -2,11 +2,16 @@
 
 echo "Setting up everything for Linux"
 # in case we are in bash
-echo "Switching to zsh..."
-zsh
+
 
 echo "Lets first make sure our package list is up to date"
 sudo apt-get update
+
+echo "Installing zsh"
+sudo apt-get install zsh
+
+echo "Switching to zsh..."
+zsh
 
 # go home
 echo "Going home..."
@@ -22,7 +27,7 @@ sudo apt-get install git
 # try to install z
 if [[ ! -d ~/z ]]; then
     echo "Installing z..."
-    git clone git@github.com:rupa/z.git z
+    git clone https://github.com/rupa/z.git z
 fi
 
 # install tree
