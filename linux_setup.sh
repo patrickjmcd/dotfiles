@@ -44,7 +44,7 @@ cd ~/github
 
 # clone the repo to get all the dotfile goodness
 echo "Cloning dotfiles..."
-git clone git@github.com:patrickjmcd/dotfiles.git dotfiles
+git clone https://github.com/patrickjmcd/dotfiles.git dotfiles
 
 # symlink ~/github/dotfiles to ~/dotfiles to make it easier to manage
 # we want all our version controlled configs in ~/dotfiles.
