@@ -195,6 +195,13 @@ osx() {
 
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 
+    if [ -f ~/.gitignore_global ]; then
+        echo "Overriding .gitignore_global..."
+        mv ~/.gitignore_global ~/.gitignore_global.bak
+    fi
+
+    ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
+
     if [ -f ~/.hyperterm.js ]; then
         echo "Overriding .hyperterm.js..."
         mv ~/.hyperterm.js ~/.hyperterm.js.bak
