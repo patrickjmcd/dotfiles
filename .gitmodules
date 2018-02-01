@@ -1,0 +1,3 @@
+[submodule "git-summary"]
+	path = git-summary
+	url = https://github.com/MirkoLedda/git-summary
