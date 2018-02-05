@@ -241,6 +241,10 @@ combined_setup() {
     echo "Installing n and trash-cli..."
     npm install --global n trash-cli spaceship-prompt
 
+    # install global pip submodules
+    echo "Installing python modules"
+    pip install speedtest-cli
+
     # if ~/github does not exist, create it
     if [ ! -d ~/github ]; then
         echo "Creating ~/github..."
