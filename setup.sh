@@ -261,6 +261,7 @@ combined_setup() {
     # clone the repo to get all the dotfile goodness
     echo "Cloning dotfiles..."
     echo "git clone --recursive git@github.com:patrickjmcd/dotfiles.git dotfiles"
+    git clone --recursive git@github.com:patrickjmcd/dotfiles.git dotfiles
 
     echo "Moving to home to continue"
     cd ~
