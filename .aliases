@@ -41,3 +41,4 @@ alias gcleanup="delete_local_merged_branches && delete_remote_merged_branches"
 
 # get current weather
 alias weather="curl wttr.in"
+alias btc='curl -sSL https://coinbase.com/api/v1/prices/historical | head -n 1 | sed "s|^.*,|$|" | sed "s|\(\.[0-9]$\)|\10|"'
