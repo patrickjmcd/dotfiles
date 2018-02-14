@@ -71,6 +71,9 @@ brew_setup(){
   #  other windows, all kinds of fun stuff
   brew_check tmux
 
+  # hyper
+  brewcask_check hyper
+
   # Atom
   #  Text editor.
   # Alternative:
@@ -239,7 +242,7 @@ combined_setup() {
 
     # install global node modules
     echo "Installing n and trash-cli..."
-    npm install --global n trash-cli spaceship-prompt
+    npm install --global n trash-cli spaceship-prompt typescript
 
     # install global pip submodules
     echo "Installing python modules"
