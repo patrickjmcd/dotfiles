@@ -150,6 +150,9 @@ brew_setup(){
   # tree
   brew_check tree
 
+  # Spotify
+  brewcask_check spotify
+
 }
 
 aptget_setup(){
