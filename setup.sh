@@ -293,6 +293,9 @@ combined_setup() {
         mv ~/.hyperterm.js ~/.hyperterm.js.bak
     fi
 
+    echo "Installing Atom Packages"
+    apm install `cat apm_packages.list`
+
     # if they have a .zshrc, kill it
     echo "Backup any existing .zshrc config..."
     mv ~/.zshrc ~/.zshrc.bak
