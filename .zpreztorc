@@ -228,8 +228,8 @@ zstyle ':prezto:module:prompt' theme 'spaceship'
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
 
-source ~/.aliases
-source ~/.functions
+source ~/.dotfiles/.aliases
+source ~/.dotfiles/.functions
 
 alias git-summary='~/GitHub/dotfiles/git-summary/git-summary'
 
