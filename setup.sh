@@ -80,6 +80,9 @@ brew_setup(){
   #brew cask install sublime-text
   brewcask_check atom
 
+  # Visual Studio Code
+  brewcask_check visual-studio-code
+
   # Firefox
   #  Browser
   brewcask_check firefox
@@ -287,12 +290,15 @@ combined_setup() {
     ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 
     if [ -f ~/.hyperterm.js ]; then
-        echo "Overriding .hyperterm.js..."
-        mv ~/.hyperterm.js ~/.hyperterm.js.bak
+        echo "Overriding .hyper.js..."
+        mv ~/.hyper.js ~/.hyper.js.bak
     fi
 
     echo "Installing Atom Packages"
     apm install `cat apm_packages.list`
+
+    echo "Installing VS Code Packages"
+    ~/github/dotfiles/vscode.sh
 
     # if they have a .zshrc, kill it
     echo "Backup any existing .zshrc config..."
@@ -314,7 +320,7 @@ combined_setup() {
     ln -s "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/zshenv "${ZDOTDIR:-$HOME}"/.zshenv
     ln -s "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/zshrc "${ZDOTDIR:-$HOME}"/.zshrc
 
-    ln -s ~/.dotfiles/.hyperterm.js ~/.hyperterm.js
+    ln -s ~/.dotfiles/.hyper.js ~/.hyper.js
     ln -s ~/.dotfiles/.zpreztorc ~/.zpreztorc
 
     # let them know what to do
@@ -326,11 +332,11 @@ platform="$(uname | tr '[:upper:]' '[:lower:]')"
 if [[ "$platform" == "linux" ]]; then
   echo "Setting up everything for Linux"
   aptget_setup
-  combined_setup
 elif [[ "$platform" == "darwin" ]]; then
   echo "Setting everything up for macOS..."
   # in case we are in bash
   #
   brew_setup
-  combined_setup
 fi
+
+combined_setup
