@@ -18,7 +18,6 @@ brew "wget"
 brew "wireshark", link: false
 brew "caskformula/caskformula/inkscape"
 cask "atom"
-cask "eclipse-cpp"
 cask "firefox"
 cask "fritzing"
 cask "gimp"
