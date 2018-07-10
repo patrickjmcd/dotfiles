@@ -111,7 +111,7 @@ package_setup() {
 
   # install global pip submodules
   echo "Installing python modules"
-  pip install speedtest-cli
+  pip install speedtest-cli virtualfish
 }
 
 
@@ -200,7 +200,8 @@ combined_setup() {
     # switch to fish! I wanna use this immediately!
     echo "Changing shell to fish..."
     chsh -s /usr/local/bin/fish
-    
+    fish
+
     # this only works once we have changed the shell to be fish.
     echo "Installing fisher plugins..."
     fisher
