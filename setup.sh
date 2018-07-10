@@ -1,39 +1,5 @@
 #!/bin/bash
 
-brewcask_check(){
-  pkg=$1
-  if [ -z "$pkg" ]                           # Is parameter #1 zero length?
-    then
-      echo "No package name passed to brewcask_check"  # Or no parameter passed.
-    else
-      if [ -z "$(brew cask ls --versions $pkg)" ]
-      then
-        echo "brew cask install $pkg"
-        brew cask install $pkg
-      else
-        echo "brew cask upgrade $pkg"
-        brew cask upgrade $pkg
-      fi
-  fi
-}
-
-brew_check(){
-  pkg=$1
-  if [ -z "$pkg" ]                           # Is parameter #1 zero length?
-    then
-      echo "No package name passed to brew_check"  # Or no parameter passed.
-    else
-      if [ -z "$(brew ls --versions $pkg)" ]
-      then
-        echo "brew install $pkg"
-        brew install $pkg
-      else
-        echo "brew upgrade $pkg"
-        brew upgrade $pkg
-      fi
-  fi
-}
-
 brew_setup(){
 
   # install or update Homebrew
@@ -47,113 +13,14 @@ brew_setup(){
       brew update
   fi
 
-  # Install or update Homebrew Cask
-  if [[ ! -d /usr/local/Caskroom ]]; then
-      # unless user specified another location, they do not have Cask. Just try to install it, nothing will break
-      echo "Installing Cask..."
-      brew tap caskroom/cask
-  else
-      echo "Updating Cask..."
-      brew update
-  fi
+  # Install Homebrew Bundle
+  echo "Installing Homebrew Bundle"
+  brew tap Homebrew/bundle
 
-  # Spectacle
-  # keyboard-friendly window management
-  brewcask_check spectacle
-
-  # iTerm2
-  # better[citation needed] terminal application
-  brewcask_check iterm2
-
-  # tmux
-  #  terminal manager--no need for GUI terminal tabs anymore,
-  #  group terminals by project, connect to existing terms from
-  #  other windows, all kinds of fun stuff
-  brew_check tmux
-
-  # hyper
-  brewcask_check hyper
-
-  # Atom
-  #  Text editor.
-  # Alternative:
-  #brew cask install sublime-text
-  brewcask_check atom
-
-  # Visual Studio Code
-  brewcask_check visual-studio-code
-
-  # Firefox
-  #  Browser
-  brewcask_check firefox
-
-  # Chrome
-  #  Browser
-  brewcask_check google-chrome
-
-  # zsh
-  #  alternative shell, like bash but more awesome
-  brew_check zsh
-
-  # gpg
-  #  GnuPG
-  brew_check gpg
-
-
-  # virtualbox
-  #  for virtual machines
-  brewcask_check virtualbox
-
-  # vagrant
-  #  command line management and provisioning of headless Virtualbox VMs
-  brewcask_check vagrant
-
-  # boot2docker^wdocker-machine
-  #  run docker containers in a local VM using ordinary docker commands
-  #brew install boot2docker
-  brew_check docker-machine
-
-  # Heroku toolbelt
-  #  command line tool for Heroku
-  brew_check heroku
-
-  # rbenv
-  #  Ruby Environment
-  brew_check rbenv
-
-  # emacs
-  #  text editor
-  brew_check emacs
-
-  # github client
-  #  gui github client; handy for some stuff even if you prefer git on the command line
-  brewcask_check github
-
-  # wget
-  #  command line http file downloader. I always forget this isn't installed by default.
-  brew_check wget
-
-  # docker-compose (fig)
-  #  manage sets of docker containers
-  brew_check docker-compose
-
-  # postgres
-  #  required to build Ruby postgresql gem
-  brew_check postgres
-
-  # node
-  #  NodeJS. Pretty much unavoidable.
-  brew_check node
-
-  # nvm
-  #  Like RVM but Webscale™. (rvm for node)
-  brew_check nvm
-
-  # tree
-  brew_check tree
-
-  # Spotify
-  brewcask_check spotify
+  # install homebrew applications
+  echo "Installing applications via Homebrew and Cask..."
+  cd ~/github/dotfiles
+  brew bundle
 
 }
 
@@ -235,22 +102,32 @@ aptget_setup(){
   sudo apt-get install tree
 }
 
+package_setup() {
+  echo "Setting up packages for Node and Python"
+
+  # install global node modules
+  echo "Installing n and trash-cli..."
+  npm install --global n trash-cli typescript
+
+  # install global pip submodules
+  echo "Installing python modules"
+  pip install speedtest-cli
+}
+
 
 combined_setup() {
-    echo "Switching to zsh..."
-    zsh
-
     # go home
     echo "Going home..."
     cd ~
 
-    # install global node modules
-    echo "Installing n and trash-cli..."
-    npm install --global n trash-cli spaceship-prompt typescript
+    # if they have a .config/fish, kill it
+    echo "Removing any existing fish configuration..."
+    rm -rf ~/.config/fish
+    rm -rf ~/.config/fisherman
 
-    # install global pip submodules
-    echo "Installing python modules"
-    pip install speedtest-cli
+    # install node
+    echo "Installing NodeJS"
+    curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/"
 
     # if ~/github does not exist, create it
     if [ ! -d ~/github ]; then
@@ -267,13 +144,27 @@ combined_setup() {
     echo "git clone --recursive git@github.com:patrickjmcd/dotfiles.git dotfiles"
     git clone --recursive https://github.com/patrickjmcd/dotfiles.git dotfiles
 
+    cd dotfiles
+    platform="$(uname | tr '[:upper:]' '[:lower:]')"
+    if [[ "$platform" == "linux" ]]; then
+      echo "Setting up everything for Linux"
+      aptget_setup
+    elif [[ "$platform" == "darwin" ]]; then
+      echo "Setting everything up for macOS..."
+      brew_setup
+    fi
+
     echo "Moving to home to continue"
     cd ~
+
+    echo "Installing Fisherman"
+    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
     # symlink ~/github/dotfiles to ~/dotfiles to make it easier to manage
     # we want all our version controlled configs in ~/dotfiles.
     echo "Setting up symlinks..."
     ln -s ~/github/dotfiles ~/.dotfiles
+    ln -s ~/github/dotfiles/fish ~/.config/fish
 
     if [ -f ~/.gitconfig ]; then
         echo "Overriding .gitconfig..."
@@ -289,10 +180,12 @@ combined_setup() {
 
     ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 
-    if [ -f ~/.hyperterm.js ]; then
+    if [ -f ~/.hyper.js ]; then
         echo "Overriding .hyper.js..."
         mv ~/.hyper.js ~/.hyper.js.bak
     fi
+    ln -s ~/.dotfiles/.hyper.js ~/.hyper.js
+
 
     echo "Installing Atom Packages"
     apm install `cat apm_packages.list`
@@ -300,43 +193,17 @@ combined_setup() {
     echo "Installing VS Code Packages"
     ~/github/dotfiles/vscode.sh
 
-    # if they have a .zshrc, kill it
-    echo "Backup any existing .zshrc config..."
-    mv ~/.zshrc ~/.zshrc.bak
-    mv ~/.zpreztorc ~/.zpreztorc.bak
-    mv ~/.zshenv ~/.zshenv.bak
-    mv ~/.zlogin ~/.zlogin.bak
-    mv ~/.zlogout ~/.zlogout.bak
-    rm -rf ~/.zprezto
+    # add fish to our available list of shells we can use
+    echo "Adding fish to list of available shells..."
+    echo /usr/local/bin/fish | sudo tee -a /etc/shells
 
-    # # zpresto
-    echo "Cloning prezto"
-    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
-    echo "Symlinking new config files"
-    ln -s "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/zlogin "${ZDOTDIR:-$HOME}"/.zlogin
-    ln -s "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/zlogout "${ZDOTDIR:-$HOME}"/.zlogout
-    # ln -s "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/zpreztorc "${ZDOTDIR:-$HOME}"/.zpreztorc
-    ln -s "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/zshenv "${ZDOTDIR:-$HOME}"/.zshenv
-    ln -s "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/zshrc "${ZDOTDIR:-$HOME}"/.zshrc
-
-    ln -s ~/.dotfiles/.hyper.js ~/.hyper.js
-    ln -s ~/.dotfiles/.zpreztorc ~/.zpreztorc
-
-    # let them know what to do
-    echo "All done! Open a new tab or window to start using your new config."
+    # switch to fish! I wanna use this immediately!
+    echo "Changing shell to fish..."
+    chsh -s /usr/local/bin/fish
+    
+    # this only works once we have changed the shell to be fish.
+    echo "Installing fisher plugins..."
+    fisher
 }
-
-
-platform="$(uname | tr '[:upper:]' '[:lower:]')"
-if [[ "$platform" == "linux" ]]; then
-  echo "Setting up everything for Linux"
-  aptget_setup
-elif [[ "$platform" == "darwin" ]]; then
-  echo "Setting everything up for macOS..."
-  # in case we are in bash
-  #
-  brew_setup
-fi
 
 combined_setup
