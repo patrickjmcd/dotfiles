@@ -1,3 +1,7 @@
 [submodule "git-summary"]
 	path = git-summary
 	url = https://github.com/MirkoLedda/git-summary
+
+[submodule "z"]
+	path = z
+	url = https://github.com/rupa/z

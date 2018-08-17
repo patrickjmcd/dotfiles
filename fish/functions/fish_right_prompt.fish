@@ -1,1 +1,0 @@
-/Users/patrickjmcd/.config/fisherman/jacaetevha/fish_right_prompt.fish
