@@ -17,6 +17,7 @@ brew "watchman"
 brew "wget"
 brew "wireshark", link: false
 brew "caskformula/caskformula/inkscape"
+brew "zsh-autosuggestions"
 cask "atom"
 cask "firefox"
 cask "fritzing"
