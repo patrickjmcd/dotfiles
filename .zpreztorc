@@ -223,7 +223,7 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
 
-if [ -e ~/.env_variables ] then
+if [ -e ~/.env_variables ]; then
   source ~/.env_variables
 fi
 source ~/.functions
