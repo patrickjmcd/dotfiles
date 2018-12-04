@@ -228,3 +228,6 @@ if [ -e ~/.env_variables ]; then
 fi
 source ~/.functions
 source ~/.aliases
+
+export RBENV_ROOT=/usr/local/var/rbenv
+eval "$(rbenv init -)"
