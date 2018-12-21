@@ -56,7 +56,8 @@ aptget_setup:
 
 nodepackage_setup: 
 	@echo 'Setting up packages for node'
-	npm install -g typescript prettier create-react-app create-react-native-app
+	npm install -g typescript prettier create-react-app create-react-native-app yarn
+	yarn install
 
 pythonpackage_setup:
 	@echo 'Setting up packages for python'

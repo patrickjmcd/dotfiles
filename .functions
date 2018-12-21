@@ -20,3 +20,13 @@ function replace_ext {
     mv -- "$f" "${f%.$1}.$2"
   done
 }
+
+# get current IP address
+function getip() {
+  node ~/.dotfiles/scripts/getIp.js
+}
+
+# open current repo online if it's a git repo
+function open_git_repo_online() {
+  node  ~/.dotfiles/scripts/openGitRepo.js
+}

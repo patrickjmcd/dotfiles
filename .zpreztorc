@@ -223,11 +223,46 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
 
+# 
+# CUSTOM INITIALIZATIONS
+# 
+
+# use z for better fuzzy searching
+if [[ -s ~/z/z.sh ]]; then
+	source ~/z/z.sh
+fi
+
 if [ -e ~/.env_variables ]; then
   source ~/.env_variables
 fi
-source ~/.functions
-source ~/.aliases
 
+# source aliases
+if [[ -f ~/.dotfiles/.aliases ]]; then
+  source ~/.dotfiles/.aliases
+fi
+
+# source functions
+if [[ -f ~/.dotfiles/.functions ]]; then
+  source ~/.dotfiles/.functions
+fi
+
+if [ -e /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# Find your Python User Base path (where Python --user will install packages/scripts)
+USER_BASE_PATH=$(python -m site --user-base)
+export PATH=$PATH:$USER_BASE_PATH/bin
+
+# RBENV INITIALIZATION
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
+
+# GO INITIALIZATION
+export GOPATH=~/go/bin
+export PATH=$PATH:$GOPATH
+
+
+if [ -e /etc/motd ]; then
+  /etc/motd
+fi

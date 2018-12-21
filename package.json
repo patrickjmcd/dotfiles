@@ -1,0 +1,27 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "my dotfiles",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickjmcd/dotfiles.git"
+  },
+  "author": "patrickjmcd",
+  "bugs": {
+    "url": "https://github.com/patrickjmcd/dotfiles/issues"
+  },
+  "homepage": "https://github.com/patrickjmcd/dotfiles#readme",
+  "dependencies": {
+    "boxen": "^1.2.2",
+    "chalk": "^2.3.0",
+    "clipboardy": "^1.2.2",
+    "emphasize": "^2.0.0",
+    "empty-trash": "^2.1.1",
+    "execa": "^0.6.3",
+    "internal-ip": "^1.2.0",
+    "is-git-repository": "^1.1.1",
+    "open": "0.0.5",
+    "ora": "^1.2.0",
+    "simple-git": "^1.84.0"
+  }
+}
