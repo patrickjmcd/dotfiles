@@ -260,8 +260,7 @@ eval "$(rbenv init -)"
 
 # GO INITIALIZATION
 export GOPATH=~/go/bin
-export PATH=$PATH:$GOPATH
-
+export PATH=$PATH:$GOPATH/bin:$GOPATH
 
 if [ -e /etc/motd ]; then
   /etc/motd

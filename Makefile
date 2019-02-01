@@ -28,7 +28,7 @@ else
 endif 
 	$(MAKE) non_os_specific
 
-non_os_specific: nodepackage_setup pythonpackage_setup dotfiles git vscode_extensions hyper zsh
+non_os_specific: nodepackage_setup pythonpackage_setup dotfiles git vscode_extensions hyper zsh aws_cli
 
 brew_setup: 
 ifndef BREW
@@ -141,4 +141,9 @@ ifneq ($(wildcard $(DOTFILE_FOLDER)/.functions),)
 	ln -s $(DOTFILE_FOLDER)/.functions ~/.functions
 endif 
 
+
+aws_cli:
+	curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+	unzip awscli-bundle.zip
+	sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
