@@ -5,3 +5,7 @@
 [submodule "z"]
 	path = z
 	url = https://github.com/rupa/z
+
+[submodule "SpotifyControl"]
+	path = SpotifyControl
+	url = https://github.com/dronir/SpotifyControl
