@@ -1,6 +1,5 @@
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension Equinusocio.vsc-material-theme
-code --install-extension HyperledgerComposer.composer-support-client
 code --install-extension Mukundan.python-docs
 code --install-extension Orta.vscode-jest
 code --install-extension PeterJausovec.vscode-docker
@@ -13,7 +12,6 @@ code --install-extension dbaeumer.vscode-eslint
 code --install-extension eamodio.gitlens
 code --install-extension eg2.vscode-npm-script
 code --install-extension esbenp.prettier-vscode
-code --install-extension felipecaputo.git-project-manager
 code --install-extension formulahendry.auto-close-tag
 code --install-extension GrapeCity.gc-excelviewer
 code --install-extension josa.markdown-table-formatter
@@ -27,4 +25,3 @@ code --install-extension steoates.autoimport
 code --install-extension stevencl.addDocComments
 code --install-extension tht13.python
 code --install-extension vincaslt.highlight-matching-tag
-code --install-extension WakaTime.vscode-wakatime
