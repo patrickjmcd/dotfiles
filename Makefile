@@ -65,7 +65,7 @@ pythonpackage_setup:
 
 dotfiles:
 	@echo 'symlinking $(DOTFILE_FOLDER)'
-ifneq ($(wildcard ~/.gitignore_global),)
+ifneq ($(wildcard ~/.dotfiles),)
 	ln -s ~/github/dotfiles $(DOTFILE_FOLDER)
 endif 
 	
