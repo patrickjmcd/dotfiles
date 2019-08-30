@@ -65,8 +65,10 @@ pythonpackage_setup:
 
 dotfiles:
 	@echo 'symlinking $(DOTFILE_FOLDER)'
-ifneq ($(wildcard ~/.dotfiles),)
+ifneq ($(wildcard ~/.dotfiles/.),)
 	ln -s ~/github/dotfiles $(DOTFILE_FOLDER)
+else
+	@echo 'dotfile folder already exists'
 endif 
 	
 
