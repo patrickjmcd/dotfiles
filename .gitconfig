@@ -10,3 +10,5 @@
 	process = git-lfs filter-process
 [core]
 	excludesfile = /Users/patrickjmcd/.gitignore_global
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
