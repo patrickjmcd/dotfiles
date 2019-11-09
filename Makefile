@@ -33,7 +33,7 @@ non_os_specific: nodepackage_setup pythonpackage_setup dotfiles git vscode_exten
 brew_setup: 
 ifndef BREW
 	@echo "Installing Homebrew..."
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby
 	@echo "Installing Homebrew Bundle"
 	brew tap Homebrew/bundle
 	@echo "Installing applications via Homebrew and Cask..."
@@ -56,7 +56,7 @@ aptget_setup:
 
 nodepackage_setup: 
 	@echo 'Setting up packages for node'
-	npm install -g typescript prettier create-react-app create-react-native-app yarn
+	npm install -g typescript prettier create-react-app create-react-native-app yarn spaceship-prompt
 	yarn install
 
 pythonpackage_setup:
