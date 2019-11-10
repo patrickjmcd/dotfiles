@@ -10,3 +10,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
   # Set Spaceship ZSH as a prompt
   autoload -U promptinit; promptinit
   prompt spaceship
+
+eval $(thefuck --alias)
