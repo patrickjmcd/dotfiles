@@ -5,8 +5,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
+eval "$(starship init zsh)"
+
+# # The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/Users/patrickjmcd/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/patrickjmcd/google-cloud-sdk/path.zsh.inc'; fi
+
+# # The next line enables shell command completion for gcloud.
+# if [ -f '/Users/patrickjmcd/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/patrickjmcd/google-cloud-sdk/completion.zsh.inc'; fi
+
+autoload -U +X bashcompinit && bashcompinit
