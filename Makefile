@@ -129,6 +129,7 @@ endif
 
 zsh: zsh_backup 
 	git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
+	git clone --recurse-submodules https://github.com/belak/prezto-contrib ~/.zprezto/contrib
 	chsh -s /bin/zsh
 ifneq ($(wildcard $(DOTFILE_FOLDER)/.zshrc),) 
 	ln -s $(DOTFILE_FOLDER)/.zshrc ~/.zshrc
