@@ -28,12 +28,12 @@ else
 endif 
 	$(MAKE) non_os_specific
 
-non_os_specific: nodepackage_setup pythonpackage_setup dotfiles git vscode_extensions hyper zsh aws_cli
+non_os_specific: nodepackage_setup pythonpackage_setup dotfiles git hyper zsh 
 
 brew_setup: 
 ifndef BREW
 	@echo "Installing Homebrew..."
-	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby
+	/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)'
 	@echo "Installing Homebrew Bundle"
 	brew tap Homebrew/bundle
 	@echo "Installing applications via Homebrew and Cask..."
@@ -61,7 +61,7 @@ nodepackage_setup:
 
 pythonpackage_setup:
 	@echo 'Setting up packages for python'
-	pip install speedtest-cli virtualenv
+	pip3 install speedtest-cli virtualenv
 
 dotfiles:
 	@echo 'symlinking $(DOTFILE_FOLDER)'
@@ -93,8 +93,8 @@ ifneq ($(wildcard $(DOTFILE_FOLDER)/.gitignore_global),)
 	ln -s $(DOTFILE_FOLDER)/.gitconfig ~/.gitconfig
 endif 
 
-vscode_extensions:
-	$(SHELL) vscode.sh
+# vscode_extensions:
+# 	$(SHELL) vscode.sh
 
 hyper_backup:
 	@echo 'Backing up hyper'
@@ -130,6 +130,7 @@ endif
 zsh: zsh_backup 
 	git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 	git clone --recurse-submodules https://github.com/belak/prezto-contrib ~/.zprezto/contrib
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 	chsh -s /bin/zsh
 ifneq ($(wildcard $(DOTFILE_FOLDER)/.zshrc),) 
 	ln -s $(DOTFILE_FOLDER)/.zshrc ~/.zshrc

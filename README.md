@@ -14,11 +14,11 @@ Got all that? Great. Run this install script. It will do the following:
 
 ### If your operating system is macOS, it will:
 
-- set your shell to fish
+- set your shell to zsh
 - install [Homebrew](http://brew.sh) if you don't already have it, or run `brew update` if you do
 - install [Homebrew Cask](https://caskroom.github.io/) (again, if you already have it, this won't do anything)
 - install programs that I deem absolutely necessary
-- clone this repo into  `~/github/.dotfiles` and set up your `.config/fish` directory
+- clone this repo into  `~/github/.dotfiles`
 
 Ready to get started?? Just paste this into your terminal. **WARNING:** Please make sure you have read through the setup script so you understand what this is doing before executing this.
 
