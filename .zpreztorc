@@ -34,10 +34,7 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
-  'completion' \
-  'prompt' \
-  'contrib-prompt' \
-  'contrib-thefuck'
+  'completion' 
 
 #
 # Autosuggestions
