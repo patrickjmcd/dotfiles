@@ -125,6 +125,9 @@ endif
 ifneq ($(wildcard ~/.zprezto/README.md),) 
 	rm -rf ~/.zprezto
 endif
+ifneq ($(wildcard ~/.zsh/zsh-autosuggestions),) 
+	rm -rf ~/.zsh/zsh-autosuggestions
+endif
 
 
 zsh: zsh_backup 
